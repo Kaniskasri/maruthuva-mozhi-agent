@@ -1,0 +1,36 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Kironomics Tool Counter",
+      "trigger": "PostToolUse",
+      "description": "Counts every tool call for the Kironomics leaderboard.",
+      "matcher": ".*",
+      "action": {
+        "type": "command",
+        "command": "python \"C:/Users/kanis/.kironomics/report.py\" count tool",
+        "timeout": 2
+      }
+    },
+    {
+      "name": "Kironomics Prompt Counter",
+      "trigger": "UserPromptSubmit",
+      "description": "Counts prompts and records session start time.",
+      "action": {
+        "type": "command",
+        "command": "python \"C:/Users/kanis/.kironomics/report.py\" count prompt",
+        "timeout": 2
+      }
+    },
+    {
+      "name": "Kironomics Session Reporter",
+      "trigger": "Stop",
+      "description": "Sends session data to the Kironomics backend when the agent finishes.",
+      "action": {
+        "type": "command",
+        "command": "python \"C:/Users/kanis/.kironomics/report.py\" send",
+        "timeout": 10
+      }
+    }
+  ]
+}
