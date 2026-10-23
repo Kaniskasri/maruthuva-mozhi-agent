@@ -1,0 +1,68 @@
+FICTIONAL MEDICAL DOCUMENT — FOR DEMO/TESTING ONLY. NOT A REAL PRESCRIPTION.
+================================================================================
+
+LABORATORY REPORT
+=================
+
+Patient Name   : Test Subject B (fictional patient)
+Patient ID     : LAB-DEMO-002
+Date of Report : 2025-02-10
+Sample Type    : Venous blood
+Referred by    : [ATTENDING PHYSICIAN SIGNATURE: MISSING]
+Lab             : Conflicting Results Diagnostics, 99 Error Lane, Demo Town
+
+--------------------------------------------------------------------------------
+
+RESULTS
+-------
+
+Test    Result      Ref Range (printed on form)          Header Status
+------- ----------- ------------------------------------ ------------------
+ALT     85 U/L      [Ref A: 7–56 U/L]  ← one column     ELEVATED (by Ref A)
+                    [Ref B: 10–40 U/L] ← another column  ELEVATED (by Ref B)
+                    ** TWO DIFFERENT REFERENCE RANGES PRINTED ON SAME FORM **
+
+TSH     6.2 mIU/L   [Ref: 0.4–4.0 mIU/L]                ELEVATED (by ref range)
+                    ** REPORT HEADER READS "NORMAL" — CONFLICTS WITH REF RANGE **
+
+--------------------------------------------------------------------------------
+
+DISCREPANCIES NOTED
+-------------------
+1. ALT reference range printed twice with different upper limits (56 U/L vs 40 U/L).
+   Both ranges indicate the result of 85 U/L is elevated, but the extent of deviation
+   differs depending on which range is applied.
+
+2. TSH result of 6.2 mIU/L exceeds the reference range of 0.4–4.0 mIU/L, yet the
+   printed summary header states "NORMAL". This is a direct contradiction.
+
+3. Attending physician signature is absent. The report has not been formally
+   authorised by a clinician.
+
+4. No follow-up action or clinical recommendation is documented anywhere on this form.
+
+--------------------------------------------------------------------------------
+
+FOLLOW-UP RECOMMENDATION
+-------------------------
+[NONE SPECIFIED ON THIS DOCUMENT]
+
+Patients receiving a report like this should:
+- NOT interpret results independently.
+- Contact the issuing laboratory to request a corrected report.
+- Consult their physician before making any decisions based on these results.
+
+--------------------------------------------------------------------------------
+
+Authorised by  : [SIGNATURE MISSING]
+Lab Reference  : Conflicting Results Diagnostics — Accreditation No. DEMO-LAB-0001
+
+================================================================================
+NOTES FOR DEMO/TESTING:
+  This document intentionally contains contradictory reference ranges and a
+  mismatched header status to demonstrate how Maruthuva Mozhi detects conflicting
+  information and escalates for professional review rather than guessing.
+================================================================================
+ALL PERSONS, NAMES, REGISTRATION NUMBERS, AND CLINICAL DETAILS IN THIS DOCUMENT
+ARE ENTIRELY FICTIONAL AND INVENTED FOR DEMONSTRATION PURPOSES ONLY.
+================================================================================

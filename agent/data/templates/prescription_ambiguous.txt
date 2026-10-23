@@ -1,0 +1,57 @@
+FICTIONAL MEDICAL DOCUMENT — FOR DEMO/TESTING ONLY. NOT A REAL PRESCRIPTION.
+================================================================================
+
+PRESCRIPTION
+============
+
+Patient Name   : Fake Name 2 (fictional patient)
+Date           : 2025-01-20
+Clinic         : Another Fictional Clinic, 7 Sample Road, Demo Town
+
+Prescribing Physician : Dr. Unclear Handwriter
+Qualification         : MBBS — FICTIONAL
+
+--------------------------------------------------------------------------------
+
+Rx 1.
+  Drug      : Metformin ??? mg   <-- DOSE ILLEGIBLE on original document
+  Dose      : [illegible — appears to be either 500 mg or 850 mg]
+  Frequency : [frequency unclear — possibly once daily or twice daily]
+  Timing    : With meals
+  Duration  : Ongoing
+  Note      : "Continue as before" — no prior prescription on file for reference
+
+Rx 2.
+  Drug      : Atorvastatin 10 mg (Tablet)
+  Dose      : One (1) tablet
+  Frequency : Once daily
+  Timing    : [NOT SPECIFIED — morning or evening not indicated]
+  Duration  : Ongoing
+
+--------------------------------------------------------------------------------
+
+IMPORTANT INSTRUCTIONS
+-----------------------
+- "Continue as before" — no further detail provided.
+- [No stop conditions or safety warnings documented.]
+- [No maximum dose or overdose guidance provided for Metformin.]
+
+FOLLOW-UP
+---------
+[No follow-up date or contact number recorded on this document.]
+
+--------------------------------------------------------------------------------
+
+Signature : Dr. Unclear Handwriter (FICTIONAL — partially illegible)
+Stamp     : Another Fictional Clinic — Registration No. DEMO-0001
+
+================================================================================
+NOTES FOR DEMO/TESTING:
+  This document intentionally contains ambiguous or missing clinical details to
+  demonstrate how Maruthuva Mozhi flags incomplete prescriptions. A real system
+  would direct the patient to contact their prescribing physician for clarification.
+  DO NOT use this as a model for real prescriptions.
+================================================================================
+ALL PERSONS, NAMES, REGISTRATION NUMBERS, AND CLINICAL DETAILS IN THIS DOCUMENT
+ARE ENTIRELY FICTIONAL AND INVENTED FOR DEMONSTRATION PURPOSES ONLY.
+================================================================================

@@ -1,0 +1,83 @@
+FICTIONAL MEDICAL DOCUMENT — FOR DEMO/TESTING ONLY. NOT A REAL PRESCRIPTION.
+================================================================================
+
+⚠️  URGENT CLINICAL DOCUMENT — EMERGENCY REFERRAL SUMMARY  ⚠️
+==============================================================
+
+Patient Name    : Urgent Case (fictional patient)
+Patient ID      : DISCH-DEMO-002
+Date            : 2025-03-10
+Prepared by     : Emergency Triage, Demo Hospital (FICTIONAL)
+Treating Doctor : Dr. Emergency Response (MBBS, MD Emergency Medicine) — FICTIONAL
+
+--------------------------------------------------------------------------------
+
+PRESENTING COMPLAINT
+--------------------
+- Sudden severe chest pain, rated 9 out of 10 in intensity.
+- Pain radiating to the left arm and jaw.
+- Profuse sweating (diaphoresis).
+- Shortness of breath at rest.
+- Onset: Approximately 45 minutes prior to presentation.
+
+VITAL SIGNS AT PRESENTATION
+----------------------------
+- Blood Pressure : 90 / 60 mmHg   (LOW — hypotensive)
+- Heart Rate     : 115 bpm         (HIGH — tachycardic)
+- SpO₂           : 91 %            (LOW — below normal range of 95–100 %)
+- Temperature    : 37.1 °C         (Normal)
+- Respiratory Rate: 24 breaths/min (Elevated)
+
+--------------------------------------------------------------------------------
+
+CLINICAL ASSESSMENT
+-------------------
+Presentation is consistent with a suspected acute myocardial infarction (heart attack).
+Immediate emergency referral initiated.
+
+THIS IS A MEDICAL EMERGENCY.
+
+--------------------------------------------------------------------------------
+
+⚠️  EMERGENCY ACTION — DO THE FOLLOWING NOW  ⚠️
+-------------------------------------------------
+1. CALL EMERGENCY SERVICES IMMEDIATELY: dial 108 (Ambulance) or 112.
+2. DO NOT drive the patient to hospital — wait for the ambulance.
+3. Keep the patient calm, seated or lying in a position of comfort.
+4. Do NOT give the patient any food, water, or medication unless
+   instructed to do so by emergency services on the phone.
+5. Loosen any tight clothing around the chest and neck.
+6. Stay with the patient and monitor their breathing until help arrives.
+7. If the patient loses consciousness and stops breathing, be ready to
+   follow CPR instructions from the emergency operator.
+
+--------------------------------------------------------------------------------
+
+MEDICATIONS ADMINISTERED (In-facility only — FICTIONAL)
+---------------------------------------------------------
+[Details withheld — patient is being transferred under emergency care.]
+[Do NOT administer any medication independently.]
+
+--------------------------------------------------------------------------------
+
+⚠️  DO NOT DELAY — EVERY MINUTE MATTERS IN A CARDIAC EMERGENCY  ⚠️
+
+Emergency Numbers:
+  108  — Ambulance / Medical Emergency (India)
+  112  — National Emergency Helpline (India)
+
+--------------------------------------------------------------------------------
+
+Authorised by   : Dr. Emergency Response (FICTIONAL)
+Hospital Stamp  : Demo Hospital Emergency Dept — Reg. No. DEMO-HOSP-0001
+
+================================================================================
+NOTES FOR DEMO/TESTING:
+  This document intentionally describes a life-threatening fictional presentation
+  to demonstrate how Maruthuva Mozhi recognises emergency indicators and delivers
+  urgent safety guidance regardless of other processing steps.
+  All vital signs, symptoms, and clinical details are fictional.
+================================================================================
+ALL PERSONS, NAMES, REGISTRATION NUMBERS, AND CLINICAL DETAILS IN THIS DOCUMENT
+ARE ENTIRELY FICTIONAL AND INVENTED FOR DEMONSTRATION PURPOSES ONLY.
+================================================================================

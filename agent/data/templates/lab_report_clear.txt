@@ -1,0 +1,48 @@
+FICTIONAL MEDICAL DOCUMENT — FOR DEMO/TESTING ONLY. NOT A REAL PRESCRIPTION.
+================================================================================
+
+LABORATORY REPORT
+=================
+
+Patient Name   : Test Subject A (fictional patient)
+Patient ID     : LAB-DEMO-001
+Date of Report : 2025-02-01
+Sample Type    : Venous blood — fasting
+Referred by    : Dr. Routine Checkup (FICTIONAL)
+Lab             : Demo Diagnostics, 100 Test Avenue, Sample City
+
+--------------------------------------------------------------------------------
+
+RESULTS
+-------
+
+Test                   Result          Reference Range (Adult Male)    Interpretation
+---------------------- --------------- ------------------------------- ---------------
+Hemoglobin (Hb)        14.5 g/dL       13.5 – 17.5 g/dL                NORMAL
+Fasting Blood Glucose  92 mg/dL        70 – 99 mg/dL                   NORMAL
+Serum Creatinine       0.9 mg/dL       0.6 – 1.2 mg/dL                 NORMAL
+
+--------------------------------------------------------------------------------
+
+SUMMARY
+-------
+All reported results are within the normal reference range for an adult male.
+No abnormal values detected in this panel.
+No immediate clinical action required based on these results alone.
+
+--------------------------------------------------------------------------------
+
+FOLLOW-UP RECOMMENDATION
+-------------------------
+Routine annual health check recommended in approximately 12 months (2026-02-01).
+Discuss results with your physician at your next scheduled visit.
+
+--------------------------------------------------------------------------------
+
+Authorised by  : Dr. Routine Checkup (FICTIONAL)
+Lab Reference  : Demo Diagnostics — Accreditation No. DEMO-LAB-0000
+
+================================================================================
+ALL PERSONS, NAMES, REGISTRATION NUMBERS, AND CLINICAL DETAILS IN THIS DOCUMENT
+ARE ENTIRELY FICTIONAL AND INVENTED FOR DEMONSTRATION PURPOSES ONLY.
+================================================================================

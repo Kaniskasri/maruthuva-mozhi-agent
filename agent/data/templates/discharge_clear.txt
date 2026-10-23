@@ -1,0 +1,74 @@
+FICTIONAL MEDICAL DOCUMENT — FOR DEMO/TESTING ONLY. NOT A REAL PRESCRIPTION.
+================================================================================
+
+DISCHARGE SUMMARY
+=================
+
+Patient Name    : Demo Person (fictional patient)
+Patient ID      : DISCH-DEMO-001
+Admission Date  : 2025-02-28
+Discharge Date  : 2025-03-05
+Ward            : General Medicine, Demo Hospital (FICTIONAL)
+Treating Doctor : Dr. Recovery Well (MBBS, MD) — FICTIONAL
+
+--------------------------------------------------------------------------------
+
+DIAGNOSIS
+---------
+Mild community-acquired pneumonia (fictional diagnosis for demo purposes).
+No complications during admission.
+
+--------------------------------------------------------------------------------
+
+MEDICATIONS ON DISCHARGE
+-------------------------
+
+1. Azithromycin 500 mg (Tablet)
+   - Dose      : One (1) tablet
+   - Frequency : Once daily
+   - Duration  : 3 days (complete the full course)
+   - Timing    : Same time each day, with or without food
+
+2. Paracetamol 500 mg (Tablet)
+   - Dose      : One (1) tablet
+   - Frequency : Every 6 hours as needed for fever or pain
+   - Maximum   : 4 tablets per day
+   - Duration  : As needed — discontinue once fever resolves
+
+--------------------------------------------------------------------------------
+
+DISCHARGE INSTRUCTIONS
+-----------------------
+- Rest at home for at least 5 days. Avoid strenuous activity.
+- Drink plenty of fluids (water, clear soups, oral rehydration solutions).
+- Avoid smoking and exposure to smoke or dust.
+- Complete the full 3-day course of Azithromycin even if you feel better.
+- Do not take additional antibiotics without medical advice.
+
+--------------------------------------------------------------------------------
+
+WARNING SIGNS — RETURN TO EMERGENCY DEPARTMENT IMMEDIATELY IF:
+---------------------------------------------------------------
+- Cough worsens significantly or produces blood.
+- Fever rises above 39 °C despite Paracetamol.
+- Difficulty breathing, shortness of breath, or chest pain.
+- Confusion, extreme weakness, or inability to eat or drink.
+
+Emergency Numbers : 108 (Ambulance) / 112 (National Emergency)
+
+--------------------------------------------------------------------------------
+
+FOLLOW-UP
+---------
+Schedule a GP or outpatient appointment within 7 days of discharge
+(on or before 2025-03-12) for a clinical review and chest auscultation.
+
+--------------------------------------------------------------------------------
+
+Discharge Authorised by : Dr. Recovery Well (FICTIONAL)
+Hospital Stamp          : Demo Hospital — Reg. No. DEMO-HOSP-0000
+
+================================================================================
+ALL PERSONS, NAMES, REGISTRATION NUMBERS, AND CLINICAL DETAILS IN THIS DOCUMENT
+ARE ENTIRELY FICTIONAL AND INVENTED FOR DEMONSTRATION PURPOSES ONLY.
+================================================================================

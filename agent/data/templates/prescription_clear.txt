@@ -1,0 +1,54 @@
+FICTIONAL MEDICAL DOCUMENT — FOR DEMO/TESTING ONLY. NOT A REAL PRESCRIPTION.
+================================================================================
+
+PRESCRIPTION
+============
+
+Patient Name   : Fake Name (fictional patient)
+Date           : 2025-01-15
+Clinic         : Fictional Clinic, 42 Demo Street, Test City
+
+Prescribing Physician : Dr. Fiction Specialist
+Qualification         : MBBS, MD (General Medicine) — FICTIONAL
+
+--------------------------------------------------------------------------------
+
+Rx 1.
+  Drug      : Amoxicillin 500 mg (Capsule)
+  Dose      : One (1) capsule
+  Frequency : Three times daily (morning, afternoon, night)
+  Timing    : After meals
+  Duration  : 7 days
+  Quantity  : 21 capsules
+
+Rx 2.
+  Drug      : Paracetamol 500 mg (Tablet)
+  Dose      : One (1) tablet
+  Frequency : Every 6 hours as needed for fever above 38 °C
+  Maximum   : 4 tablets per day
+  Duration  : As needed (not to exceed 5 days without review)
+
+--------------------------------------------------------------------------------
+
+IMPORTANT INSTRUCTIONS
+-----------------------
+- Take Amoxicillin for the full 7 days even if symptoms improve.
+- STOP both medications and consult a doctor immediately if a skin rash, hives,
+  or difficulty breathing develops.
+- No refills for either medication without a fresh consultation.
+- Keep out of reach of children.
+- Store below 25 °C, away from direct sunlight.
+
+FOLLOW-UP
+---------
+Review appointment: 2025-01-23 (8 days after start of course)
+
+--------------------------------------------------------------------------------
+
+Signature : Dr. Fiction Specialist (FICTIONAL)
+Stamp     : Fictional Clinic — Registration No. DEMO-0000
+
+================================================================================
+ALL PERSONS, NAMES, REGISTRATION NUMBERS, AND CLINICAL DETAILS IN THIS DOCUMENT
+ARE ENTIRELY FICTIONAL AND INVENTED FOR DEMONSTRATION PURPOSES ONLY.
+================================================================================

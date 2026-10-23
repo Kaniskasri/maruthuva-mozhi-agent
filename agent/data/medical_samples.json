@@ -1,0 +1,52 @@
+{
+  "samples": [
+    {
+      "id": "RX-CLEAR-001",
+      "document_type": "prescription",
+      "title": "Clear Prescription — Amoxicillin",
+      "text": "Patient: Fictional Patient F001. Date: 2099-01-15.\nDr. Fictional Doctor, MD (Fictional Hospital).\n\nRx: Amoxicillin 500mg tablets.\nDose: One tablet three times daily (morning, afternoon, evening) after meals.\nDuration: 7 days.\nInstructions: Take with a full glass of water. Stop medication and contact your doctor if a rash develops. Complete the full course even if symptoms improve.\n\nRefills: 0",
+      "expected_classification": "clear",
+      "notes": "Clear dosage, frequency, duration, and safety instruction present."
+    },
+    {
+      "id": "LAB-AMBIGUOUS-001",
+      "document_type": "lab_report",
+      "title": "Ambiguous Lab Report — Mixed Interpretation",
+      "text": "Patient: Fictional Patient F002. Date: 2099-02-10.\nFictional Diagnostic Lab.\n\nTest Results:\n- Hemoglobin: 13.5 g/dL [Reference: 12.0–16.0 g/dL for females, 13.5–17.5 for males] — see physician for interpretation\n- Fasting Blood Glucose: 120 mg/dL [Reference: 70–99 mg/dL fasting] — slightly elevated\n- Serum Creatinine: 1.1 mg/dL [Reference: 0.6–1.2 mg/dL]\n\nNote: Patient gender not specified on form. Refer to physician for interpretation and follow-up. 'Slightly elevated' glucose noted but no diagnosis or treatment recommendation is made here.",
+      "expected_classification": "ambiguous",
+      "notes": "Conflicting normal ranges due to missing gender, borderline glucose with no action plan, 'refer to physician' language."
+    },
+    {
+      "id": "DISCHARGE-ESCALATE-001",
+      "document_type": "discharge_summary",
+      "title": "Escalation Case — Emergency Symptoms",
+      "text": "Patient: Fictional Patient F003. Date: 2099-03-05.\nFictional General Hospital.\n\nPresentation: Patient presents with sudden severe chest pain (rated 9/10), shortness of breath, profuse sweating, and dizziness. Left arm pain reported. Symptoms began approximately 45 minutes ago.\nPMH: Hypertension, Type 2 Diabetes.\nCurrent Medications: Metformin 500mg, Amlodipine 5mg.\nImmediate Action Required: CALL EMERGENCY SERVICES IMMEDIATELY. Do not drive yourself to hospital.",
+      "expected_classification": "escalate",
+      "notes": "Emergency symptoms (potential cardiac event indicators) requiring immediate professional medical intervention."
+    },
+    {
+      "id": "RX-CLEAR-002",
+      "document_type": "prescription",
+      "title": "Clear Prescription — Paracetamol",
+      "text": "Patient: Fictional Patient F004. Date: 2099-04-20.\nDr. Fictional Doctor 2, MD (Fictional Clinic).\n\nRx: Paracetamol 500mg tablets.\nDose: One to two tablets every 4–6 hours as needed for pain or fever.\nMaximum: Do not exceed 8 tablets (4g) in 24 hours.\nDuration: Up to 5 days.\nInstructions: Do not take with other products containing paracetamol. Avoid alcohol. Contact doctor if fever persists beyond 3 days.",
+      "expected_classification": "clear",
+      "notes": "All dosage parameters and warnings clearly stated."
+    },
+    {
+      "id": "LAB-AMBIGUOUS-002",
+      "document_type": "lab_report",
+      "title": "Ambiguous Lab Report — Incomplete Values",
+      "text": "Patient: Fictional Patient F005. Date: 2099-05-12.\nFictional Lab Services.\n\nThyroid Function Test:\n- TSH: ??? (sample hemolyzed, retest required)\n- Free T4: 1.2 ng/dL [Reference: 0.8–1.8 ng/dL] — within range\n- Free T3: Not tested\n\nNote: TSH result unavailable due to sample quality. Clinical interpretation incomplete. Please repeat TSH test. Do not adjust thyroid medication without complete results.",
+      "expected_classification": "ambiguous",
+      "notes": "Critical test (TSH) result missing, incomplete clinical picture."
+    },
+    {
+      "id": "DISCHARGE-ESCALATE-002",
+      "document_type": "discharge_summary",
+      "title": "Escalation Case — Severe Allergic Reaction",
+      "text": "Patient: Fictional Patient F006. Date: 2099-06-18.\nFictional Emergency Department.\n\nPresentation: Sudden onset facial swelling, throat tightening, difficulty breathing, hives across body. Possible anaphylaxis. Exposure to unknown allergen 20 minutes prior.\nAction Required: ADMINISTER EPINEPHRINE IF AVAILABLE. CALL EMERGENCY SERVICES IMMEDIATELY. Keep patient in lying position with legs elevated unless breathing is difficult.",
+      "expected_classification": "escalate",
+      "notes": "Anaphylaxis — life-threatening emergency."
+    }
+  ]
+}
