@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="ta-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>மருத்துவ மொழி — Maruthuva Mozhi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* ─── Design tokens ──────────────────────────────────────────── */
+:root {
+  --bg:       #0B1020;
+  --surface:  #121A2E;
+  --surface2: #0F1628;
+  --line:     #223052;
+  --ink:      #E7ECF6;
+  --mute:     #8D9AB5;
+  --orange:   #FF9900;
+  --green:    #34D399;
+  --red:      #F87171;
+  --amber:    #FBBF24;
+  --blue:     #60A5FA;
+  --teal:     #2DD4BF;
+  --yellow:   #FDE68A;
+  --r-card:   14px;
+  --r-btn:    10px;
+  --r-pill:   99px;
+  --font-tamil: 'Noto Sans Tamil', 'Inter', system-ui, sans-serif;
+}
+
+/* ─── Reset / base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+h1,h2,h3,h4 { margin: 0; }
+a { color: var(--blue); }
+button {
+  cursor: pointer;
+  font: inherit;
+  border: 0;
+}
+textarea, input[type="text"] {
+  font: inherit;
+  background: var(--surface2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r-btn);
+  padding: 10px 12px;
+  resize: vertical;
+  outline: none;
+  width: 100%;
+}
+textarea:focus, input[type="text"]:focus {
+  border-color: var(--orange);
+}
+.sr-only {
+  position: absolute; width:1px; height:1px;
+  padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+/* ─── Layout ─────────────────────────────────────────────────── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.header-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 12px var(--orange);
+  flex-shrink: 0;
+}
+.header-titles { flex: 1; min-width: 0; }
+.header-titles h1 {
+  font: 700 20px var(--font-tamil);
+  color: var(--ink);
+}
+.header-titles p {
+  font-size: 13px;
+  color: var(--mute);
+  margin: 2px 0 0;
+}
+#status-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--mute);
+}
+.status-pill {
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 3px 10px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 18px;
+  padding: 20px 24px;
+  align-items: start;
+}
+
+/* ─── Card ───────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 18px;
+}
+.card + .card { margin-top: 18px; }
+.card-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mute);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 14px;
+}
+
+/* ─── Tabs ───────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--surface2);
+  border-radius: var(--r-btn);
+  padding: 4px;
+  margin-bottom: 14px;
+}
+.tab-btn {
+  flex: 1;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--mute);
+  transition: background .15s, color .15s;
+}
+.tab-btn[aria-selected="true"] {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ─── File upload area ───────────────────────────────────────── */
+.upload-area {
+  border: 2px dashed var(--line);
+  border-radius: var(--r-card);
+  padding: 22px;
+  text-align: center;
+  color: var(--mute);
+  transition: border-color .15s;
+  cursor: pointer;
+}
+.upload-area:hover, .upload-area.drag-over {
+  border-color: var(--orange);
+}
+.upload-area input[type="file"] {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.upload-icon { font-size: 28px; margin-bottom: 6px; }
+.upload-hint { font-size: 12px; }
+
+/* ─── Buttons ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: var(--r-btn);
+  font-weight: 600;
+  font-size: 14px;
+  transition: opacity .15s;
+}
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn-primary { background: var(--orange); color: #111; }
+.btn-secondary { background: var(--surface2); color: var(--ink); border: 1px solid var(--line); }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+.btn-full { width: 100%; justify-content: center; margin-top: 10px; }
+
+/* ─── Extraction result ──────────────────────────────────────── */
+#extract-result {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: none;
+}
+.method-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: var(--r-pill);
+  background: var(--surface2);
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  margin-bottom: 10px;
+  margin-right: 6px;
+}
+.pages-badge {
+  font-size: 11px;
+  color: var(--mute);
+}
+.field-group { margin-bottom: 8px; }
+.field-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mute);
+  margin-bottom: 4px;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  font-size: 12px;
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 2px 9px;
+  color: var(--ink);
+}
+.chip.highlight { background: #3B2A00; border-color: var(--amber); color: var(--amber); }
+details { margin-top: 10px; }
+details summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--mute);
+  user-select: none;
+  padding: 4px 0;
+}
+details pre {
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: 12px 'JetBrains Mono', monospace;
+  color: var(--mute);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 6px 0 0;
+  max-height: 180px;
+  overflow: auto;
+}
+
+/* ─── Chat ───────────────────────────────────────────────────── */
+#log {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 60px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+.msg {
+  padding: 10px 13px;
+  border-radius: 12px;
+  max-width: 88%;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  font-family: var(--font-tamil);
+  font-size: 14px;
+}
+.msg.user  { align-self: flex-end;   background: #1E2A47; }
+.msg.bot   { align-self: flex-start; background: #18243B; border: 1px solid var(--line); }
+.msg .meta { color: var(--mute); font-size: 11px; margin-top: 6px; }
+.chat-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: flex-end;
+}
+.chat-row textarea {
+  flex: 1;
+  min-height: 42px;
+  max-height: 120px;
+  resize: none;
+}
+.chat-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  align-items: center;
+}
+.reset-btn {
+  background: var(--surface2);
+  color: var(--mute);
+  border: 1px solid var(--line);
+  border-radius: var(--r-btn);
+  padding: 5px 12px;
+  font-size: 12px;
+}
+
+/* ─── Tamil panel ────────────────────────────────────────────── */
+#tamil-panel { display: none; }
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.col-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mute);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 6px;
+}
+.translation-box {
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 80px;
+  font-family: var(--font-tamil);
+  font-size: 14px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+.translation-box .hl {
+  background: var(--yellow);
+  color: #111;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+@media (max-width: 600px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* ─── Verification ───────────────────────────────────────────── */
+#verify-panel { display: none; }
+.score-wrap { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+.score-bar-bg {
+  flex: 1;
+  height: 10px;
+  background: var(--surface2);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.score-bar-fill {
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: var(--green);
+  transition: width .4s ease;
+}
+.score-val { font-size: 14px; font-weight: 700; min-width: 36px; }
+.pass-badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 700;
+}
+.pass-badge.pass { background: #0D3329; color: var(--green); border: 1px solid var(--green); }
+.pass-badge.fail { background: #3B0D0D; color: var(--red);   border: 1px solid var(--red);   }
+.verify-lists { margin-top: 10px; }
+.verify-section { margin-bottom: 8px; }
+.verify-section h4 { font-size: 12px; color: var(--mute); margin-bottom: 4px; }
+.verify-section ul { margin: 0; padding-left: 18px; font-size: 13px; }
+.verify-section li { margin-bottom: 2px; }
+
+/* ─── Safety status ──────────────────────────────────────────── */
+#safety-panel { display: none; }
+.safety-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  border: 2px solid transparent;
+  transition: background .3s, border-color .3s;
+}
+.safety-badge.clear     { background: #0D3329; border-color: var(--green); color: var(--green); }
+.safety-badge.review    { background: #2D2200; border-color: var(--amber); color: var(--amber); }
+.safety-badge.emergency {
+  background: #3B0D0D; border-color: var(--red); color: var(--red);
+  animation: pulse-red 1.1s ease-in-out infinite;
+}
+@keyframes pulse-red {
+  0%,100% { box-shadow: 0 0 0 0 rgba(248,113,113,.0); }
+  50%      { box-shadow: 0 0 0 8px rgba(248,113,113,.25); }
+}
+.prob-rows { display: flex; flex-direction: column; gap: 7px; }
+.prob-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 44px;
+  gap: 10px;
+  align-items: center;
+  font: 12px 'JetBrains Mono', monospace;
+}
+.prob-bar-bg {
+  height: 8px;
+  background: var(--surface2);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.prob-bar-fill {
+  height: 100%;
+  border-radius: var(--r-pill);
+}
+.latency-note { font-size: 11px; color: var(--mute); margin-top: 8px; }
+
+/* ─── Decision sidebar ───────────────────────────────────────── */
+.sidebar {
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+#dec {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 60px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.empty-state { color: var(--mute); font-size: 13px; }
+.d {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: var(--surface2);
+  animation: pop .35s ease;
+}
+@keyframes pop { from { transform:scale(.97); opacity:.2; } to { transform:none; opacity:1; } }
+.d .d-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.tag {
+  font: 11px 'JetBrains Mono', monospace;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+}
+.tag.proceed  { color: var(--green); border-color: var(--green); }
+.tag.guide, .tag.review { color: var(--amber); border-color: var(--amber); }
+.tag.deny, .tag.block   { color: var(--red);   border-color: var(--red);   }
+.tag.confirm  { color: var(--blue);  border-color: var(--blue);  }
+.d-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 46px;
+  gap: 8px;
+  align-items: center;
+  font: 12px 'JetBrains Mono', monospace;
+  margin: 4px 0;
+}
+.d-bar { height: 8px; background: var(--surface); border-radius: var(--r-pill); overflow: hidden; }
+.d-bar i { display: block; height: 100%; border-radius: var(--r-pill); }
+.d-kv {
+  color: var(--mute);
+  font: 11px 'JetBrains Mono', monospace;
+  margin-top: 5px;
+  word-break: break-all;
+}
+.credit {
+  font-size: 11px;
+  color: var(--mute);
+  text-align: center;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 18px 24px 24px;
+  font-size: 12px;
+  color: var(--mute);
+  border-top: 1px solid var(--line);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 14px 14px;
+  }
+  .sidebar {
+    position: static;
+  }
+  header { gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <span class="header-dot" aria-hidden="true"></span>
+  <div class="header-titles">
+    <h1>மருத்துவ மொழி</h1>
+    <p>Tamil Medical Document Assistant</p>
+  </div>
+  <div id="status-bar" role="status" aria-live="polite">
+    <span class="status-pill" id="st-agent">Agent: …</span>
+    <span class="status-pill" id="st-llm">LLM: …</span>
+    <span class="status-pill" id="st-decider">Decider: …</span>
+  </div>
+</header>
+
+<!-- ══════════ MAIN LAYOUT ══════════ -->
+<div class="layout">
+
+  <!-- ── Left column ── -->
+  <div>
+
+    <!-- ═══ Section 1: Document Input ═══ -->
+    <div class="card" id="input-card">
+      <div class="card-title">Document Input</div>
+
+      <!-- Tabs -->
+      <div class="tabs" role="tablist" aria-label="Input method">
+        <button class="tab-btn" role="tab" id="tab-upload" aria-selected="true" aria-controls="panel-upload">
+          Upload Document
+        </button>
+        <button class="tab-btn" role="tab" id="tab-paste" aria-selected="false" aria-controls="panel-paste">
+          Paste Text
+        </button>
+      </div>
+
+      <!-- Upload panel -->
+      <div id="panel-upload" class="tab-panel active" role="tabpanel" aria-labelledby="tab-upload">
+        <div class="upload-area" id="drop-zone" tabindex="0" aria-label="Drop a file here or click to browse">
+          <input type="file" id="file-input" accept=".txt,.pdf,.png,.jpg,.jpeg" aria-label="Choose a medical document file">
+          <div class="upload-icon" aria-hidden="true">📄</div>
+          <div id="drop-label">Drop a file here, or <strong>click to browse</strong></div>
+          <div class="upload-hint">.txt · .pdf · .png · .jpg · .jpeg</div>
+        </div>
+        <button class="btn btn-primary btn-full" id="btn-extract" disabled>
+          Extract Document
+        </button>
+      </div>
+
+      <!-- Paste panel -->
+      <div id="panel-paste" class="tab-panel" role="tabpanel" aria-labelledby="tab-paste">
+        <textarea id="paste-text" rows="6" placeholder="Paste medical document text here…" aria-label="Medical document text"></textarea>
+        <button class="btn btn-primary btn-full" id="btn-use-text">
+          Use This Text
+        </button>
+      </div>
+
+      <!-- Extraction result -->
+      <div id="extract-result" aria-live="polite">
+        <span class="method-badge" id="ext-method"></span>
+        <span class="pages-badge" id="ext-pages"></span>
+        <div id="ext-fields"></div>
+        <details>
+          <summary>Raw extracted text</summary>
+          <pre id="ext-raw"></pre>
+        </details>
+      </div>
+    </div><!-- /input-card -->
+
+    <!-- ═══ Section 2: Chat ═══ -->
+    <div class="card" id="chat-card">
+      <div class="card-title">Chat / Translation</div>
+
+      <div id="log" aria-live="polite" aria-label="Conversation"></div>
+
+      <div class="chat-row">
+        <label class="sr-only" for="chat-input">Message</label>
+        <textarea id="chat-input" rows="2"
+          placeholder="Type a question or paste medical text… (Shift+Enter for newline)"
+          aria-label="Chat message"></textarea>
+        <button class="btn btn-primary" id="btn-send" style="height:42px;">Send</button>
+      </div>
+
+      <div class="chat-actions">
+        <button class="btn reset-btn" id="btn-reset" title="Start a new session">↺ Reset session</button>
+      </div>
+    </div>
+
+    <!-- ═══ Section 3: Tamil Explanation Panel ═══ -->
+    <div class="card" id="tamil-panel" aria-live="polite">
+      <div class="card-title">Tamil Explanation — தமிழ் விளக்கம்</div>
+      <div class="two-col">
+        <div>
+          <div class="col-label">Original</div>
+          <div class="translation-box" id="orig-box" lang="en"></div>
+        </div>
+        <div>
+          <div class="col-label">Tamil Translation (தமிழ் மொழிபெயர்ப்பு)</div>
+          <div class="translation-box" id="tamil-box" lang="ta"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Section 4: Verification ═══ -->
+    <div class="card" id="verify-panel">
+      <div class="card-title">Medical Meaning Verification</div>
+      <div class="score-wrap">
+        <div class="score-bar-bg" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="score-bar-role">
+          <div class="score-bar-fill" id="score-bar" style="width:0%"></div>
+        </div>
+        <span class="score-val" id="score-val">—</span>
+        <span class="pass-badge" id="pass-badge"></span>
+      </div>
+      <div class="verify-lists" id="verify-lists"></div>
+      <button class="btn btn-secondary btn-sm" id="btn-verify" style="margin-top:12px">
+        ↻ Verify
+      </button>
+    </div>
+
+    <!-- ═══ Section 5: Safety Status ═══ -->
+    <div class="card" id="safety-panel">
+      <div class="card-title">Safety Status</div>
+      <div class="safety-badge clear" id="safety-badge" aria-live="assertive" role="alert">
+        <span id="safety-icon" aria-hidden="true">✓</span>
+        <span id="safety-label">CLEAR</span>
+      </div>
+      <div class="prob-rows" id="prob-rows"></div>
+      <div class="latency-note" id="dec-latency"></div>
+    </div>
+
+  </div><!-- /left column -->
+
+  <!-- ── Right column: Decision sidebar ── -->
+  <div class="sidebar">
+    <div class="card">
+      <div class="card-title">Strands Decider 2B</div>
+      <div id="dec">
+        <p class="empty-state">Decisions appear here as the agent makes them.</p>
+      </div>
+      <div class="credit" style="margin-top:12px;">
+        Built with the AWS User Group Madurai Strands Decider hackathon kit
+      </div>
+    </div>
+  </div>
+
+</div><!-- /layout -->
+
+<footer>Built with the AWS User Group Madurai Strands Decider hackathon kit</footer>
+
+<script>
+"use strict";
+/* ──────────────────────────────────────────────────────────────
+   Utilities
+   ────────────────────────────────────────────────────────────── */
+const esc = (s) =>
+  String(s ?? "").replace(/[&<>"']/g,
+    (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+const hasTamil = (s) => /[\u0B80-\u0BFF]/.test(s);
+
+/* highlight preserved clinical values (numbers, units, dates, medicine names) */
+function highlightClinical(text) {
+  // numbers with units, dosages, dates
+  return esc(text).replace(
+    /(\b\d+(?:\.\d+)?(?:\s?(?:mg|mcg|ml|g|IU|%|mmol|mmHg|bpm|kg|cm|\/dL|\/L|mEq|units?)\b)?|\b\d{1,2}[\/-]\d{1,2}[\/-]\d{2,4}\b)/gi,
+    '<span class="hl">$1</span>'
+  );
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Header: /api/info
+   ────────────────────────────────────────────────────────────── */
+async function loadInfo() {
+  try {
+    const info = await fetch("/api/info").then(r => r.json());
+    document.getElementById("st-agent").textContent   = "Agent: " + (info.agent || "—");
+    document.getElementById("st-llm").textContent     = "LLM: "   + (info.llm   || "—");
+    document.getElementById("st-decider").textContent = "Decider: "+ (info.decider || "—");
+  } catch (_) { /* non-fatal */ }
+}
+loadInfo();
+
+/* ──────────────────────────────────────────────────────────────
+   Tab switching
+   ────────────────────────────────────────────────────────────── */
+document.querySelectorAll("[role='tab']").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const panelId = btn.getAttribute("aria-controls");
+    document.querySelectorAll("[role='tab']").forEach(b => {
+      b.setAttribute("aria-selected", b === btn ? "true" : "false");
+    });
+    document.querySelectorAll(".tab-panel").forEach(p => {
+      p.classList.toggle("active", p.id === panelId);
+    });
+  });
+});
+
+/* ──────────────────────────────────────────────────────────────
+   Upload tab — file select + drag & drop
+   ────────────────────────────────────────────────────────────── */
+const dropZone  = document.getElementById("drop-zone");
+const fileInput = document.getElementById("file-input");
+const btnExtract = document.getElementById("btn-extract");
+const dropLabel  = document.getElementById("drop-label");
+let selectedFile = null;
+
+dropZone.addEventListener("click", () => fileInput.click());
+dropZone.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") fileInput.click(); });
+
+fileInput.addEventListener("change", () => {
+  if (fileInput.files[0]) setFile(fileInput.files[0]);
+});
+
+dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
+dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
+dropZone.addEventListener("drop", e => {
+  e.preventDefault();
+  dropZone.classList.remove("drag-over");
+  if (e.dataTransfer.files[0]) setFile(e.dataTransfer.files[0]);
+});
+
+function setFile(f) {
+  selectedFile = f;
+  dropLabel.innerHTML = `<strong>${esc(f.name)}</strong> (${(f.size/1024).toFixed(1)} KB)`;
+  btnExtract.disabled = false;
+}
+
+btnExtract.addEventListener("click", async () => {
+  if (!selectedFile) return;
+  btnExtract.disabled = true;
+  btnExtract.textContent = "Extracting…";
+  try {
+    const fd = new FormData();
+    fd.append("file", selectedFile);
+    const res = await fetch("/api/upload", { method: "POST", body: fd });
+    const data = await res.json();
+    if (data.error) { alert("Extraction error: " + data.error); return; }
+    showExtraction(data);
+    if (data.raw_text) {
+      document.getElementById("chat-input").value = data.raw_text;
+    }
+  } catch (e) {
+    alert("Upload failed: " + e.message);
+  } finally {
+    btnExtract.disabled = false;
+    btnExtract.textContent = "Extract Document";
+  }
+});
+
+/* ──────────────────────────────────────────────────────────────
+   Paste tab — Use This Text
+   ────────────────────────────────────────────────────────────── */
+document.getElementById("btn-use-text").addEventListener("click", () => {
+  const text = document.getElementById("paste-text").value.trim();
+  if (!text) return;
+  // Minimal extraction display for pasted text
+  showExtraction({ method: "plain-text", raw_text: text, pages: null, clinical_fields: null });
+  document.getElementById("chat-input").value = text;
+  // switch to chat
+  document.getElementById("chat-input").focus();
+});
+
+/* ──────────────────────────────────────────────────────────────
+   Render extraction result
+   ────────────────────────────────────────────────────────────── */
+function showExtraction(data) {
+  const el = document.getElementById("extract-result");
+  el.style.display = "block";
+
+  const methodMap = {
+    "pdf-parse":  "PDF Parse",
+    "ocr":        "OCR",
+    "plain-text": "Plain Text",
+  };
+  document.getElementById("ext-method").textContent =
+    methodMap[data.method] || (data.method || "Text");
+
+  document.getElementById("ext-pages").textContent =
+    data.pages ? `${data.pages} page${data.pages === 1 ? "" : "s"}` : "";
+
+  const fields = data.clinical_fields || {};
+  const fieldDefs = [
+    { key: "drugs",    label: "Drugs" },
+    { key: "dosages",  label: "Dosages", cls: "highlight" },
+    { key: "dates",    label: "Dates" },
+    { key: "warnings", label: "Warnings", cls: "highlight" },
+  ];
+  let fieldsHtml = "";
+  for (const { key, label, cls } of fieldDefs) {
+    const vals = fields[key] || [];
+    if (!vals.length) continue;
+    fieldsHtml += `<div class="field-group">
+      <div class="field-label">${esc(label)}</div>
+      <div class="chips">${vals.map(v => `<span class="chip ${cls || ""}">${esc(v)}</span>`).join("")}</div>
+    </div>`;
+  }
+  document.getElementById("ext-fields").innerHTML = fieldsHtml || "";
+  document.getElementById("ext-raw").textContent = data.raw_text || "";
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Chat
+   ────────────────────────────────────────────────────────────── */
+const log = document.getElementById("log");
+let sessionId = "demo-" + Math.random().toString(36).slice(2, 8);
+let lastOriginal = "";
+let lastTamil    = "";
+
+function addMsg(cls, html) {
+  const d = document.createElement("div");
+  d.className = "msg " + cls;
+  d.innerHTML = html;
+  log.appendChild(d);
+  log.scrollTop = 1e9;
+  return d;
+}
+
+const chatInput = document.getElementById("chat-input");
+const btnSend   = document.getElementById("btn-send");
+
+// Shift+Enter = newline; Enter = send
+chatInput.addEventListener("keydown", e => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+btnSend.addEventListener("click", sendMessage);
+
+async function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  chatInput.value = "";
+  btnSend.disabled = true;
+
+  addMsg("user", esc(text));
+  const wait = addMsg("bot", "<span class='meta'>thinking…</span>");
+
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ message: text, session_id: sessionId }),
+    });
+    const out = await res.json();
+    if (out.error) {
+      wait.innerHTML = `<span style="color:var(--red)">${esc(out.error)}</span>`;
+      return;
+    }
+
+    const decisions = out.decisions || [];
+    decisions.forEach(renderDecision);
+
+    const n = decisions.length;
+    wait.innerHTML = esc(out.reply) +
+      `<div class="meta">${out.latency_ms} ms · ${n} decision${n===1?"":"s"}` +
+      (out.served_by ? ` · ${esc(out.served_by)}` : "") + `</div>`;
+
+    // Tamil panel
+    const reply = out.reply || "";
+    if (hasTamil(reply)) {
+      lastOriginal = text;
+      lastTamil    = reply;
+      showTamilPanel(text, reply);
+    }
+
+    // Safety status from first decision that has the guardrail keys
+    const guardrailDec = decisions.find(d =>
+      "is_clear" in d || "safety_concern" in d || "needs_clarification" in d
+    );
+    if (guardrailDec) showSafetyPanel(guardrailDec);
+
+    // Verification panel — show if we have a Tamil result
+    if (hasTamil(reply)) {
+      showVerifyPanel(null); // reset to prompt verify
+    }
+
+  } catch (e) {
+    wait.innerHTML = `<span style="color:var(--red)">Network error: ${esc(e.message)}</span>`;
+  } finally {
+    btnSend.disabled = false;
+    chatInput.focus();
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Decision sidebar (preserving original kit logic, extended)
+   ────────────────────────────────────────────────────────────── */
+const dec = document.getElementById("dec");
+
+function renderDecision(rec) {
+  if (dec.querySelector(".empty-state")) dec.innerHTML = "";
+
+  const verdict = rec.verdict || rec.action || rec.tier || "";
+  const title   = rec.tool
+    ? `before ${rec.tool}`
+    : (rec.stage || rec.pattern || "decision");
+
+  const probs = Object.entries(rec).filter(([k, v]) =>
+    typeof v === "number" && v >= 0 && v <= 1 && !k.endsWith("_ms"));
+  const rest  = Object.entries(rec).filter(([k, v]) =>
+    !(typeof v === "number" && v >= 0 && v <= 1) &&
+    !["verdict","action","tool","stage","pattern"].includes(k));
+
+  const barColor = (v) => v >= 0.5 ? "#34D399" : "#F87171";
+
+  const el = document.createElement("div");
+  el.className = "d";
+  el.innerHTML =
+    `<div class="d-head">
+       <span>${esc(title)} <span class="tag" style="font-size:10px">${esc(rec.pattern || "")}</span></span>
+       <span class="tag ${esc(verdict)}">${esc(verdict)}</span>
+     </div>` +
+    probs.map(([k,v]) =>
+      `<div class="d-row">
+         <span>${esc(k)}</span>
+         <span class="d-bar"><i style="width:${v*100}%;background:${barColor(v)}"></i></span>
+         <span>${v.toFixed(2)}</span>
+       </div>`).join("") +
+    `<div class="d-kv">${rest.map(([k,v]) =>
+      `${esc(k)}: ${esc(typeof v==="object" ? JSON.stringify(v) : v)}`).join(" · ")}</div>`;
+
+  dec.prepend(el);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Tamil panel
+   ────────────────────────────────────────────────────────────── */
+function showTamilPanel(original, tamil) {
+  const panel = document.getElementById("tamil-panel");
+  panel.style.display = "block";
+  document.getElementById("orig-box").innerHTML  = highlightClinical(original);
+  document.getElementById("tamil-box").innerHTML = highlightClinical(tamil);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Safety panel
+   ────────────────────────────────────────────────────────────── */
+function showSafetyPanel(dec) {
+  const panel = document.getElementById("safety-panel");
+  panel.style.display = "block";
+
+  const badge    = document.getElementById("safety-badge");
+  const icon     = document.getElementById("safety-icon");
+  const label    = document.getElementById("safety-label");
+  const probRows = document.getElementById("prob-rows");
+  const latency  = document.getElementById("dec-latency");
+
+  const safetyP  = dec.safety_concern      ?? 0;
+  const clarP    = dec.needs_clarification  ?? 0;
+  const clearP   = dec.is_clear             ?? 0;
+
+  badge.className = "safety-badge";
+  if (safetyP >= 0.5) {
+    badge.classList.add("emergency");
+    icon.textContent  = "⚠";
+    label.textContent = "EMERGENCY";
+  } else if (clarP >= 0.5) {
+    badge.classList.add("review");
+    icon.textContent  = "⚠";
+    label.textContent = "NEEDS REVIEW";
+  } else {
+    badge.classList.add("clear");
+    icon.textContent  = "✓";
+    label.textContent = "CLEAR";
+  }
+
+  const probDefs = [
+    { key: "is_clear",            label: "is_clear",            val: clearP,  color: "#34D399" },
+    { key: "needs_clarification", label: "needs_clarification", val: clarP,   color: "#FBBF24" },
+    { key: "safety_concern",      label: "safety_concern",      val: safetyP, color: "#F87171" },
+  ];
+  probRows.innerHTML = probDefs.map(({ label, val, color }) =>
+    `<div class="prob-row">
+       <span>${esc(label)}</span>
+       <span class="prob-bar-bg">
+         <span class="prob-bar-fill" style="width:${(val*100).toFixed(1)}%;background:${color}"></span>
+       </span>
+       <span>${(val*100).toFixed(0)}%</span>
+     </div>`).join("");
+
+  latency.textContent = dec.decider_ms != null
+    ? `Decider latency: ${dec.decider_ms} ms` : "";
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Verification panel
+   ────────────────────────────────────────────────────────────── */
+function showVerifyPanel(result) {
+  const panel = document.getElementById("verify-panel");
+  panel.style.display = "block";
+
+  if (!result) {
+    // just show the panel with a prompt to verify
+    document.getElementById("score-bar").style.width = "0%";
+    document.getElementById("score-val").textContent = "—";
+    document.getElementById("pass-badge").textContent = "";
+    document.getElementById("pass-badge").className = "pass-badge";
+    document.getElementById("verify-lists").innerHTML =
+      `<p style="color:var(--mute);font-size:13px;">Click Verify to check the Tamil translation.</p>`;
+    document.getElementById("score-bar-role").setAttribute("aria-valuenow", "0");
+    return;
+  }
+
+  const score = Math.round((result.score ?? 0) * 100);
+  const passed = result.passed ?? false;
+
+  document.getElementById("score-bar").style.width = score + "%";
+  document.getElementById("score-bar").style.background = passed ? "var(--green)" : "var(--red)";
+  document.getElementById("score-val").textContent = score + "%";
+  document.getElementById("score-bar-role").setAttribute("aria-valuenow", score);
+
+  const badge = document.getElementById("pass-badge");
+  badge.textContent  = passed ? "Passed ✓" : "Failed ✗";
+  badge.className    = "pass-badge " + (passed ? "pass" : "fail");
+
+  const lists = document.getElementById("verify-lists");
+  let html = "";
+
+  if (result.missing_fields?.length) {
+    html += `<div class="verify-section">
+      <h4>Missing fields</h4>
+      <ul>${result.missing_fields.map(f => `<li>${esc(f)}</li>`).join("")}</ul>
+    </div>`;
+  }
+  if (result.altered_values?.length) {
+    html += `<div class="verify-section">
+      <h4>Altered values</h4>
+      <ul>${result.altered_values.map(f => `<li>${esc(f)}</li>`).join("")}</ul>
+    </div>`;
+  }
+  if (result.warnings?.length) {
+    html += `<div class="verify-section">
+      <h4>Warnings</h4>
+      <ul>${result.warnings.map(f => `<li>${esc(f)}</li>`).join("")}</ul>
+    </div>`;
+  }
+  if (!html) html = `<p style="color:var(--green);font-size:13px;">All clinical details verified ✓</p>`;
+  lists.innerHTML = html;
+}
+
+document.getElementById("btn-verify").addEventListener("click", async () => {
+  if (!lastOriginal && !lastTamil) return;
+  const btn = document.getElementById("btn-verify");
+  btn.disabled = true;
+  btn.textContent = "Verifying…";
+  try {
+    const res = await fetch("/api/verify", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ original_text: lastOriginal, tamil_text: lastTamil }),
+    });
+    const data = await res.json();
+    if (data.error) { alert("Verify error: " + data.error); return; }
+    showVerifyPanel(data);
+  } catch (e) {
+    alert("Verify failed: " + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "↻ Verify";
+  }
+});
+
+/* ──────────────────────────────────────────────────────────────
+   Session reset
+   ────────────────────────────────────────────────────────────── */
+document.getElementById("btn-reset").addEventListener("click", async () => {
+  await fetch("/api/reset", { method: "POST" }).catch(() => {});
+  sessionId = "demo-" + Math.random().toString(36).slice(2, 8);
+  log.innerHTML = "";
+  dec.innerHTML = `<p class="empty-state">Decisions appear here as the agent makes them.</p>`;
+  document.getElementById("safety-panel").style.display   = "none";
+  document.getElementById("tamil-panel").style.display    = "none";
+  document.getElementById("verify-panel").style.display   = "none";
+  document.getElementById("extract-result").style.display = "none";
+  lastOriginal = ""; lastTamil = "";
+});
+</script>
+</body>
+</html>

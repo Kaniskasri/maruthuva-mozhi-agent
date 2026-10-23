@@ -1,0 +1,7 @@
+# Amazon Bedrock AgentCore features for Maruthuva Mozhi.
+# Memory and Gateway not used in this submission (kept simple).
+memory:
+  enabled: false
+
+gateway:
+  enabled: false

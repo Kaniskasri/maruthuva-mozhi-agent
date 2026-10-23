@@ -1,0 +1,21 @@
+# Demo script for Maruthuva Mozhi — Tamil medical document translation agent.
+# Each turn is typed into the demo UI against the real agent.
+# `narrate` lines describe the situation; make_video.py appends what the decider actually decided.
+title: "Maruthuva Mozhi: Tamil Medical Document Translation with Safety Guardrails"
+pitch: "An AI agent that translates medical documents into Tamil, with Strands Decider classifying each document before translation."
+features:
+  - "translate prescriptions, lab reports, and discharge summaries into simple Tamil"
+  - "Strands Decider classifies every document: clear, ambiguous, or safety escalation"
+  - "preserves medicine names, dosages, and dates exactly — never guesses or alters clinical values"
+  - "emergency documents trigger immediate guidance in Tamil and English"
+  - "deployed on Amazon Bedrock AgentCore Runtime"
+eager: false
+intro: "Maruthuva Mozhi helps Tamil-speaking patients understand medical documents. Strands Decider checks every document before translation — clear instructions are translated, ambiguous ones are flagged, and safety emergencies are escalated immediately."
+turns:
+  - say: "Please translate this prescription into Tamil: Amoxicillin 500mg, one tablet three times daily after meals for 7 days. Stop if rash develops."
+    narrate: "A clear prescription with explicit dosage and duration — the decider should classify this as safe to translate."
+  - say: "Can you translate this lab report: Hemoglobin value with reference ranges included. Patient gender not recorded. Refer to physician for interpretation."
+    narrate: "An ambiguous lab report — gender is missing, so the normal range is unclear. The decider should flag this for clarification."
+  - say: "Translate this emergency note: Patient presents with sudden severe chest pain, shortness of breath, profuse sweating, dizziness, left arm pain. History: Hypertension, Diabetes. CALL EMERGENCY SERVICES IMMEDIATELY."
+    narrate: "An emergency escalation case — the decider detects a safety concern and the agent provides emergency guidance without translating."
+outro: "One forward pass per decision, calibrated probabilities the code can branch on, and Amazon Bedrock for the conversation. Safe, fast, and consistent — even for the most critical documents."
